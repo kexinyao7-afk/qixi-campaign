@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026七夕墨镜营销活动方案</title>
+<style>
+:root{--bg:#f7f4f1;--paper:#fff;--ink:#231f20;--muted:#6f6668;--rose:#a83f5d;--rose2:#f3dce4;--gold:#a57937;--line:#eadfe1;--green:#237a57;--amber:#a25b17;--red:#a33a3a;--blue:#3b6db5;--blue2:#e3ecf7}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.65}
+.toolbar{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--line);padding:10px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.toolbar .tlb{font-size:13px;font-weight:700;color:var(--rose);margin-right:6px}
+.toolbar button{padding:6px 14px;border-radius:8px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px;font-family:inherit;white-space:nowrap}
+.toolbar button.on{background:var(--rose);color:#fff;border-color:var(--rose)}
+.toolbar button.save{background:var(--green);color:#fff;border-color:var(--green)}
+.toolbar button.reset{border-color:var(--red);color:var(--red)}
+.toolbar .sep{width:1px;height:20px;background:var(--line)}
+main{max-width:1180px;margin:0 auto;padding:20px 24px 64px}.hero{background:linear-gradient(135deg,#fff 0%,#fff8fa 58%,#f3dce4 100%);border:1px solid var(--line);border-radius:22px;padding:40px;box-shadow:0 12px 34px rgba(80,30,45,.08)}
+.eyebrow{color:var(--rose);font-weight:750;letter-spacing:.12em;font-size:13px}.hero h1{margin:8px 0 10px;font-size:42px;line-height:1.15}.hero .slogan{font-size:22px;color:var(--rose);font-weight:700}.hero p{max-width:860px;color:var(--muted)}
+.grid{display:grid;gap:16px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px}.metric strong{display:block;font-size:26px;color:var(--rose)}.metric span{color:var(--muted);font-size:13px}
+section{margin-top:20px;position:relative}h2{font-size:27px;margin:0 0 14px}h3{font-size:19px;margin:0 0 8px}.callout{border-left:5px solid var(--rose);background:#fff8fa;padding:16px 18px;border-radius:10px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:14px}th,td{padding:10px 9px;border-bottom:1px solid var(--line);vertical-align:middle;text-align:left}th{background:#fbf4f6;color:#5b3a44;font-weight:700;white-space:nowrap}tr:last-child td{border-bottom:none}.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+td[rowspan]{vertical-align:middle}
+tr:hover td{background:#fdfafb}
+.wide-table{font-size:12px}.wide-table th,.wide-table td{padding:8px 6px}
+ul,ol{padding-left:21px;margin:8px 0}.flow{display:flex;gap:10px;align-items:stretch;flex-wrap:wrap}.step{flex:1;min-width:160px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}.step b{color:var(--rose)}
+.copy{background:#231f20;color:#fff;border-radius:14px;padding:18px}.copy b{color:#f5bdcc}.copy p{margin:8px 0}.small{font-size:13px;color:var(--muted)}.pill{font-size:12px;border:1px solid #d8c6cb;padding:2px 7px;border-radius:10px;white-space:nowrap}.footer{margin-top:30px;color:var(--muted);font-size:13px}
+.tab-nav{display:flex;gap:0;background:var(--bg);padding:0 24px}.tab-nav button{padding:10px 24px;border:none;border-radius:12px 12px 0 0;background:var(--line);color:var(--muted);cursor:pointer;font-size:14px;font-weight:600;font-family:inherit;transition:all .15s}.tab-nav button.active{background:#fff;color:var(--rose);box-shadow:0 -2px 8px rgba(0,0,0,.04)}.tab-panel{display:none}.tab-panel.active{display:block}
+.drag-wrap{position:relative;margin-bottom:8px;border-radius:14px;transition:box-shadow .15s,outline .15s}
+.edit-mode .drag-wrap{outline:2px dashed transparent;cursor:grab}
+.edit-mode .drag-wrap:hover{outline-color:var(--blue)}
+.edit-mode .drag-wrap.dragging{opacity:.4;outline-color:var(--rose)}
+.edit-mode .drag-wrap.drag-over{outline-color:var(--green);box-shadow:0 0 0 4px rgba(35,122,87,.15)}
+.drag-handle{display:none;position:absolute;left:8px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:18px;cursor:grab;padding:4px 6px;border-radius:6px;line-height:1;user-select:none}
+.edit-mode .drag-handle{display:block}
+.edit-mode .drag-wrap:hover .drag-handle{background:var(--blue2)}
+.edit-mode section{padding-left:36px}
+[data-editable]{transition:background .1s}
+.edit-mode [data-editable]:hover{background:rgba(59,109,181,.04);border-radius:4px;outline:1px dashed rgba(59,109,181,.25)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#231f20;color:#fff;padding:10px 20px;border-radius:10px;font-size:13px;z-index:200;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+@media(max-width:800px){
+  body{font-size:15px;line-height:1.55}
+  .toolbar{padding:6px 10px;gap:4px}.toolbar button{padding:4px 8px;font-size:11px;border-radius:6px}.toolbar .sep,.toolbar .small{display:none}.toolbar .tlb{font-size:12px;margin-right:2px}
+  main{padding:12px 10px 40px}
+  .hero{padding:22px 18px;border-radius:14px}.hero h1{font-size:26px}.hero .slogan{font-size:17px}.hero p{font-size:14px}
+  .g4,.g3,.g2{grid-template-columns:1fr;gap:10px}
+  .card{padding:14px;border-radius:12px}.metric strong{font-size:22px}
+  section{margin-top:16px}h2{font-size:20px;margin-bottom:10px}h3{font-size:16px}
+  table{font-size:12px;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}th,td{padding:7px 5px}
+  .wide-table{font-size:10px}.wide-table th,.wide-table td{padding:6px 4px}
+  .flow{display:block}.step{min-width:auto;margin-bottom:8px;padding:12px}.step b{font-size:13px}.step .small{font-size:11px}
+  .copy{padding:14px;font-size:13px}
+  .callout{padding:12px 14px}
+  .drag-handle{font-size:16px}
+  .edit-mode section{padding-left:24px}
+  .tab-nav{padding:0 10px}.tab-nav button{padding:8px 16px;font-size:12px}
+  .footer{font-size:12px;margin-top:20px}
+}
+</style>
+</head>
+<body>
+<div class="toolbar">
+<span class="tlb">七夕活动方案</span>
+<span class="sep"></span>
+<button id="btnEdit" onclick="toggleEdit()">编辑模式</button>
+<button id="btnSave" class="save" onclick="saveAll()">保存</button>
+<button id="btnReset" class="reset" onclick="resetAll()">恢复原始</button>
+<span class="sep"></span>
+<span class="small">编辑模式下：拖拽 ≡ 排序 | 双击文字编辑 | 内容自动保存到本地</span>
+</div>
+<div class="tab-nav">
+<button class="active" onclick="switchTab('plan')">活动方案</button>
+<button onclick="switchTab('exec')">执行分工</button>
+</div>
+<div class="toast" id="toast"></div>
+<div id="tab-plan" class="tab-panel active">
+<main id="canvas">
+<header class="hero">
+<div class="eyebrow">QIXI 2026 · SUNGLASSES CAMPAIGN</div>
+<h1>七夕「为爱出镜」墨镜限定企划</h1>
+<div class="slogan">为爱遮光，不遮心动。</div>
+<p>指定镜架 5 折、满 999 元赠七夕礼盒、Coach 0HC7192D 镜架自带 Coach 项链。全国 23 家门店同步，500 条项链配货。</p>
+<div class="grid g4">
+<div class="card metric"><strong>23家</strong><span>全国同步门店</span></div>
+<div class="card metric"><strong>1,200副</strong><span>镜架货盘总量</span></div>
+<div class="card metric"><strong>500条</strong><span>Coach 项链</span></div>
+<div class="card metric"><strong>5折</strong><span>指定镜架</span></div>
+</div>
+</header>
+
+<div class="drag-wrap" draggable="false" data-id="1"><span class="drag-handle">≡</span>
+<section><h2>一、货盘总览</h2><div data-editable="false">
+<table><thead><tr><th>SKU</th><th>品牌</th><th class="num">库存</th><th class="num">吊牌价</th><th class="num">活动价</th><th>折算</th><th>角色</th></tr></thead><tbody>
+<tr><td>CL40282U-01A-53</td><td>CELINE 赛琳</td><td class="num">100</td><td class="num">¥4,300</td><td class="num">¥1,980</td><td class="num">4.6折</td><td><span class="pill">形象</span></td></tr>
+<tr><td>0HC8443D-500287-54</td><td>Coach 蔻驰</td><td class="num">300</td><td class="num">¥1,280</td><td class="num">¥599</td><td class="num">4.7折</td><td><span class="pill">引流</span></td></tr>
+<tr><td>VERYDIOR S3F-10A0-61</td><td>Dior 迪奥</td><td class="num">100</td><td class="num">¥4,800</td><td class="num">¥2,750</td><td class="num">5.7折</td><td><span class="pill">利润</span></td></tr>
+<tr><td>GG1001SK-001-55</td><td>Gucci 古驰</td><td class="num">100</td><td class="num">¥2,750</td><td class="num">¥1,480</td><td class="num">5.4折</td><td><span class="pill">主推</span></td></tr>
+<tr><td>OVE4361F-GB1/87-55</td><td>VERSACE 范思哲</td><td class="num">100</td><td class="num">¥2,900</td><td class="num">¥1,280</td><td class="num">4.4折</td><td><span class="pill">造型</span></td></tr>
+<tr><td>0HC7192D-900571-57</td><td>Coach 蔻驰</td><td class="num">500</td><td class="num">¥1,280</td><td class="num">¥950</td><td class="num">7.4折</td><td><span class="pill">配链款</span></td></tr>
+<tr style="font-weight:700;background:#fbf4f6"><td colspan="2">合计</td><td class="num">1,200</td><td class="num">¥2,499,000</td><td class="num">¥1,403,700</td><td class="num">约5.6折</td><td></td></tr>
+</tbody></table>
+<p class="small" style="margin-top:10px">注：5 款设计师镜架单款折算在 4.4—5.7 折之间，整体加权约 5 折，与「指定镜架 5 折」机制吻合。第 6 款 0HC7192D（Coach 配链款）单买 7.4 折，但本身就含 Coach 项链一条，活动期间全国共 500 条库存。吊牌总额 ¥249.9 万，活动总额 ¥140.37 万，整体让利 ¥109.6 万。</p>
+</div></section></div>
+
+<div class="drag-wrap" draggable="false" data-id="2"><span class="drag-handle">≡</span>
+<section><h2>二、活动机制</h2><div data-editable="false">
+<div class="callout" style="margin-bottom:14px"><b>两条规则，可叠加：</b>① 满 999 元，指定镜架 5 折 + 七夕礼盒；② 购买 Coach 0HC7192D-900571-57 镜架，每副赠送 Coach 项链一条。</div>
+</div></section></div>
+
+<div class="drag-wrap" draggable="false" data-id="3"><span class="drag-handle">≡</span>
+<section><h2>三、门店配货方案</h2><div data-editable="false">
+<div class="callout" style="margin-bottom:14px">按城市消费力分三档，每个 SKU 单独列出，直接照表配货。合计：5 款指定镜架 700 副 + Coach 配链款 500 副 + 项链 500 条，23 家门店。</div>
+<table class="wide-table"><thead><tr><th>档位</th><th>门店</th><th class="num">Coach<br>8443D</th><th class="num">CELINE</th><th class="num">Dior</th><th class="num">Gucci</th><th class="num">VERSACE</th><th class="num">5款计</th><th class="num">配链款<br>7192D</th><th class="num">项链</th><th class="num">总计/店</th></tr></thead><tbody>
+<tr><td rowspan="10"><b>A 一线城市</b></td><td>上海 K11 店</td><td class="num">15</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">35</td><td class="num">24</td><td class="num">24</td><td class="num">59</td></tr>
+<tr><td>上海静安店</td><td class="num">15</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">35</td><td class="num">24</td><td class="num">24</td><td class="num">59</td></tr>
+<tr><td>上海徐汇店</td><td class="num">15</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">35</td><td class="num">24</td><td class="num">24</td><td class="num">59</td></tr>
+<tr><td>上海浦东店</td><td class="num">15</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">35</td><td class="num">24</td><td class="num">24</td><td class="num">59</td></tr>
+<tr><td>北京朝阳店</td><td class="num">15</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">35</td><td class="num">24</td><td class="num">24</td><td class="num">59</td></tr>
+<tr><td>北京大悦中心店</td><td class="num">15</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">35</td><td class="num">24</td><td class="num">24</td><td class="num">59</td></tr>
+<tr><td>深圳南山店</td><td class="num">15</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">35</td><td class="num">24</td><td class="num">24</td><td class="num">59</td></tr>
+<tr><td>深圳卓越店</td><td class="num">15</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">35</td><td class="num">24</td><td class="num">24</td><td class="num">59</td></tr>
+<tr><td>广州天河店</td><td class="num">15</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">35</td><td class="num">24</td><td class="num">24</td><td class="num">59</td></tr>
+<tr><td>香港尖沙咀店</td><td class="num">15</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">5</td><td class="num">35</td><td class="num">24</td><td class="num">24</td><td class="num">59</td></tr>
+<tr><td rowspan="10"><b>B 新一线城市</b></td><td>成都 IFS 店</td><td class="num">13</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">29</td><td class="num">21</td><td class="num">21</td><td class="num">50</td></tr>
+<tr><td>重庆 IFS 店</td><td class="num">13</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">29</td><td class="num">21</td><td class="num">21</td><td class="num">50</td></tr>
+<tr><td>杭州上城店</td><td class="num">13</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">29</td><td class="num">21</td><td class="num">21</td><td class="num">50</td></tr>
+<tr><td>西安 SKP 店</td><td class="num">13</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">29</td><td class="num">21</td><td class="num">21</td><td class="num">50</td></tr>
+<tr><td>南京 IFCX 店</td><td class="num">13</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">29</td><td class="num">21</td><td class="num">21</td><td class="num">50</td></tr>
+<tr><td>苏州国金店</td><td class="num">13</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">29</td><td class="num">21</td><td class="num">21</td><td class="num">50</td></tr>
+<tr><td>武汉国金店</td><td class="num">13</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">29</td><td class="num">21</td><td class="num">21</td><td class="num">50</td></tr>
+<tr><td>长沙芙蓉广场</td><td class="num">13</td><td class="num"><b>5</b></td><td class="num"><b>5</b></td><td class="num"><b>5</b></td><td class="num"><b>5</b></td><td class="num">33</td><td class="num">21</td><td class="num">21</td><td class="num">54</td></tr>
+<tr><td>宁波阪急店</td><td class="num">13</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">29</td><td class="num">21</td><td class="num">21</td><td class="num">50</td></tr>
+<tr><td>昆明恒隆广场店</td><td class="num">13</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">4</td><td class="num">29</td><td class="num">21</td><td class="num">21</td><td class="num">50</td></tr>
+<tr><td rowspan="3"><b>C 二三线城市</b></td><td>郑州华润店</td><td class="num">7</td><td class="num">3</td><td class="num">3</td><td class="num">3</td><td class="num">3</td><td class="num">19</td><td class="num">17</td><td class="num">17</td><td class="num">36</td></tr>
+<tr><td>福州八仁汇店（商场店）</td><td class="num">7</td><td class="num">3</td><td class="num">3</td><td class="num">3</td><td class="num">3</td><td class="num">19</td><td class="num">17</td><td class="num">17</td><td class="num">36</td></tr>
+<tr><td>汕头万象城（商场店）</td><td class="num">6</td><td class="num">3</td><td class="num">3</td><td class="num">3</td><td class="num">3</td><td class="num">18</td><td class="num">16</td><td class="num">16</td><td class="num">34</td></tr>
+<tr style="font-weight:700;background:#fbf4f6"><td>合计</td><td>23 家</td><td class="num">300</td><td class="num">100</td><td class="num">100</td><td class="num">100</td><td class="num">100</td><td class="num">700</td><td class="num">500</td><td class="num">500</td><td class="num">—</td></tr>
+</tbody></table>
+<p class="small" style="margin-top:10px">核对：Coach 10×15+10×13+(7+7+6)=300 ✓ | 四品牌各 10×5+(4×9+5)+(3×3)=100 ✓ | 配链款 10×24+10×21+(17+17+16)=500 ✓ | 长沙因历史业绩在 B 档中四品牌各多配 1 副。</p>
+</div></section></div>
+
+<div class="drag-wrap" draggable="false" data-id="4"><span class="drag-handle">≡</span>
+<section><h2>四、种草与转化</h2><div data-editable="false">
+<div class="callout" style="margin-bottom:16px">全国门店用自己的小红书号发内容。日常探店达人笔记中自然植入七夕活动信息，不做硬广。内容从门店日常里拍，聚焦试戴过程和脸型选款。</div>
+<div class="grid g3">
+<div class="card"><h3>小红书：门店号日常种草</h3><ul><li>每个门店每周 2 篇，用手机实拍，不追求精修</li><li>角度：素颜上脸对比、礼盒 + 配链款实物开箱、顾客到店实拍（经同意）、库存播报</li><li>标题参考：对话式、带场景感（详见日期拆解表）</li><li>C 端评论由门店号直接回复引导私信或到店</li></ul></div>
+<div class="card"><h3>短视频：门店自制</h3><ul><li>15 秒「换镜前后」对比视频</li><li>导购入镜真人试戴，不追求专业拍摄</li><li>统一挂门店位置标签 + 话题 #礼物 #七夕</li></ul></div>
+</div></div></section></div>
+
+<div class="drag-wrap" draggable="false" data-id="12"><span class="drag-handle">≡</span>
+<section><h2>五、电商直播联动</h2><div data-editable="false">
+<div class="callout" style="margin-bottom:14px">电商团队有直播能力，可覆盖全国流量。</div>
+<div class="card"><h3>直播间做什么</h3><ul><li>真人试戴 6 款 + 脸型对比</li><li>礼盒 + 配链款项链拆箱实拍</li><li>吊牌价 vs 活动价对比，5 折力度说清楚</li><li>末尾库存播报「哪些款哪些店还有货」</li></ul></div>
+<table style="margin-top:14px"><thead><tr><th>场次</th><th>日期建议</th><th>内容重点</th></tr></thead><tbody>
+<tr><td>首场预热</td><td>8/10</td><td>6 款展示 + 礼盒配链款开箱，不推购买只种草</td></tr>
+<tr><td>送礼专场</td><td>8/14—15</td><td>七夕送礼攻略 + 脸型选款 + 门店引导</td></tr>
+<tr><td>冲量连播</td><td>8/17—18</td><td>库存实时更新 + 限时引导到店</td></tr>
+</tbody></table>
+</div></section></div>
+
+<div class="drag-wrap" draggable="false" data-id="5"><span class="drag-handle">≡</span>
+<section><h2>六、微信私域</h2><div data-editable="false">
+<div class="grid g3">
+<div class="card"><h3>朋友圈</h3><p>各门店导购统一发九宫格：6 款镜架 + 脸型指南 + 礼盒图 + 配链款特写。</p></div>
+<div class="card"><h3>1 对 1 推荐</h3><p>按客户标签分批触达。情侣礼赠推 Dior/Gucci，悦己自用推 CELINE/VERSACE，预算有限推 Coach ¥599 款，想要项链的推 Coach ¥950 配链款。</p></div>
+<div class="card"><h3>召回</h3><p>8 月 15 日、17 日、19 日三次批量提醒未成交客户：库存变动、赠品余量。</p></div>
+</div></div></section></div>
+
+<div class="drag-wrap" draggable="false" data-id="6"><span class="drag-handle">≡</span>
+<section><h2>七、活动节奏</h2><div data-editable="false">
+<div class="flow">
+<div class="step"><b>8/1—8/6</b><br>准备期<br><span class="small">各平台海报预热、培训导购拍摄、礼盒与项链到店</span></div>
+<div class="step"><b>8/7—8/12</b><br>种草期<br><span class="small">门店发布试戴视频、小红书笔记、朋友圈产品种草及活动内容，礼盒与项链实物展出，少量 KOC 购物分享，日常探店达人笔记中自然植入七夕活动信息</span></div>
+<div class="step"><b>8/13—8/16</b><br>蓄水期<br><span class="small">各门店私域 1 对 1 推荐，内容持续发布</span></div>
+<div class="step"><b>8/17—8/19</b><br>爆发期<br><span class="small">全国门店到店活动，库存每日播报</span></div>
+<div class="step"><b>8/20—8/23</b><br>收尾期<br><span class="small">晒单 UGC 征集，老客售后关怀</span></div>
+</div></div></section></div>
+
+<div class="drag-wrap" draggable="false" data-id="7"><span class="drag-handle">≡</span>
+<section><h2>八、各平台发布计划</h2><div data-editable="false">
+<table><thead><tr><th>平台</th><th>频次（每店）</th><th>发布时段</th><th>22 店总量</th><th>内容方向</th></tr></thead><tbody>
+<tr><td>小红书笔记</td><td>每周 2 篇</td><td>8/7—8/19</td><td>约 130 篇</td><td>脸型选镜、礼盒开箱、配链款展示、镜架上脸实拍</td></tr>
+<tr><td>抖音 + 视频号</td><td>每周 1 条</td><td>8/7—8/19</td><td>约 65 条</td><td>15 秒换镜对比、导购真人试戴</td></tr>
+<tr><td>朋友圈</td><td>每周 5 条</td><td>8/1—8/19</td><td>约 210 条</td><td>九宫格产品图、活动海报、赠品实拍</td></tr>
+</tbody></table>
+<div class="grid g2" style="margin-top:14px">
+<div class="card"><h3>内容方向参考（门店视角，按节奏自行选取发布）</h3>
+<table><thead><tr><th>阶段</th><th>小红书选题</th><th>朋友圈选题</th></tr></thead><tbody>
+<tr><td>预热 8/1—8/6</td><td>礼盒配链款到货随拍</td><td>活动海报预告</td></tr>
+<tr><td rowspan="2">种草 8/7—8/12</td><td>① 店员试戴 + 脸型对比</td><td>6 款镜架平铺 + 配链款标注</td></tr>
+<tr><td>② 送礼攻略：看脸型、看预算、看要不要项链</td><td>礼盒 + 配链款拆箱实拍</td></tr>
+<tr><td rowspan="2">蓄水 8/13—8/16</td><td>① 素颜 vs 戴墨镜对比</td><td>不同脸型戴同款对比</td></tr>
+<tr><td>② 配链款 + 项链上脸搭配</td><td>镜架 + 礼盒 + 配链款全家福</td></tr>
+<tr><td rowspan="2">爆发 8/17—8/19</td><td>① 配链款项链余量播报</td><td>剩余配链款库存提醒</td></tr>
+<tr><td>② 七夕当天店内实拍</td><td>活动截止提醒</td></tr>
+</tbody></table></div>
+<div class="card"><h3>发布规则</h3><ul><li>笔记标题统一带「七夕 5 折」，正文带话题 #礼物 #七夕</li><li>视频挂门店位置标签</li><li>朋友圈统一在 11:00、14:00、20:00 三个时段发布</li><li>所有内容使用同一组活动 KV 和产品素材，各店可替换自拍内容</li></ul></div>
+</div></div></section></div>
+
+<div class="drag-wrap" draggable="false" data-id="8"><span class="drag-handle">≡</span>
+<section><h2>九、活动文案</h2><div data-editable="false">
+<div class="grid g2">
+<div class="copy"><b>门店号笔记标题</b><p>七夕 5 折｜这 6 款墨镜，戴起来差别有多大</p><p>满 999 送礼盒｜Coach 配链款自带项链</p></div>
+<div class="copy"><b>朋友圈</b><p>七夕礼物不猜。5 款设计师镜架 5 折，¥599 起。满 999 送七夕礼盒。Coach 配链款 ¥950 自带项链一条。到店说脸型，帮你 3 选 1。</p></div>
+<div class="copy"><b>导购私聊</b><p>七夕选了 6 款镜架，5 款 5 折 ¥599 起，满 999 再送七夕礼盒。还有一个 Coach 配链款 ¥950，自带项链。告诉我脸型和预算，帮你锁定到店试。</p></div>
+</div></div></section></div>
+
+<div class="drag-wrap" draggable="false" data-id="9"><span class="drag-handle">≡</span>
+<section><h2>十、预算与 KPI</h2><div data-editable="false">
+<div class="grid g2">
+<div class="card"><h3>总预算 ¥7,000</h3><table><tbody><tr><td>七夕礼盒（预估 400 份）</td><td class="num">¥5,000</td></tr><tr><td>Coach 项链（500 条，已有库存）</td><td class="num">¥0</td></tr><tr><td>机动</td><td class="num">¥2,000</td></tr></tbody></table></div>
+</div></div></section></div>
+
+<div class="drag-wrap" draggable="false" data-id="10"><span class="drag-handle">≡</span>
+<section><h2>十一、待确认</h2><div data-editable="false">
+<ol>
+<li>各门店导购是否愿意出镜拍内容？需提前沟通和简单培训。</li>
+<li>礼盒 400 份是否够？满 999 触发概率高，按售罄 60% 约 350 份、75% 约 450 份。建议备 450 份机动。</li>
+</ol>
+</div></section></div>
+
+<div class="footer">方案日期：2026-07-28 | 销售预测为情景测算，不构成结果承诺。</div>
+</main>
+</div>
+
+<div id="tab-exec" class="tab-panel">
+<main>
+
+<div class="drag-wrap" draggable="false" data-id="11"><span class="drag-handle">≡</span>
+<section><h2>执行分工表</h2><div data-editable="false">
+<table><thead><tr><th>板块</th><th>负责人</th><th>具体事项</th><th>截止时间</th></tr></thead><tbody>
+<tr><td>总统筹</td><td>AC总、陈总、余兰</td><td>整体进度把控、跨板块协调、关键决策</td><td>全程</td></tr>
+<tr><td>海报设计</td><td>林可欣</td><td>活动 KV 海报设计、各平台适配尺寸输出</td><td>7/30</td></tr>
+<tr><td>小红书文案</td><td>丽莎</td><td>活动文案参考模板（种草笔记、试戴笔记、赠品开箱等）</td><td>7/31</td></tr>
+<tr><td>朋友圈规范</td><td>林可欣</td><td>朋友圈文案模板 + 图片拍摄规范（角度、构图、滤镜统一）</td><td>7/31</td></tr>
+<tr><td>KOS 账号</td><td>欣然、思豆</td><td>两个 KOS 账号日常运营、购物分享内容发布</td><td>8/7—8/19</td></tr>
+<tr><td>门店执行</td><td>思豆、欣然</td><td>各门店拍摄与发布落地跟进、素材收集、节奏提醒</td><td>8/1—8/19</td></tr>
+<tr><td>达人板块</td><td>灵榕</td><td>日常探店达人沟通，笔记中自然植入七夕活动信息</td><td>8/7—8/19</td></tr>
+<tr><td>货品礼品分发</td><td>陈总</td><td>镜架按配额分配到各店、礼盒按需配到店、配链款 500 副 + 项链 500 条同步到店</td><td>8/6 前</td></tr>
+<tr><td>门店笔记审核</td><td>曼芸、丽莎、泽鸿</td><td>各门店日常发布的小红书笔记内容审核与反馈</td><td>8/7—8/19</td></tr>
+</tbody></table>
+<p class="small" style="margin-top:10px">所有截止时间均为建议日期，实际以项目群内确认版为准。各板块负责人如有调整，直接双击表格文字修改后保存。</p>
+</div></section></div>
+
+<div class="footer">方案日期：2026-07-28 | 销售预测为情景测算，不构成结果承诺。</div>
+</main>
+</div>
+
+<script>
+var editMode=false;
+var originalOrder=null;
+var originalContent=null;
+
+function switchTab(name){
+  document.querySelectorAll('.tab-nav button').forEach(function(b){b.classList.remove('active')});
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active')});
+  document.querySelector('.tab-nav button[onclick*="'+name+'"]').classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
+}
+
+function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},1800)}
+
+function toggleEdit(){
+  editMode=!editMode;
+  document.body.classList.toggle('edit-mode',editMode);
+  document.getElementById('btnEdit').classList.toggle('on',editMode);
+  var wraps=document.querySelectorAll('.drag-wrap');
+  var editables=document.querySelectorAll('[data-editable]');
+  for(var i=0;i<wraps.length;i++)wraps[i].draggable=editMode;
+  for(var i=0;i<editables.length;i++)editables[i].contentEditable=editMode?"true":"false";
+  if(editMode){
+    if(!originalOrder){originalOrder=[];for(var i=0;i<wraps.length;i++)originalOrder.push(wraps[i].dataset.id)}
+    if(!originalContent){originalContent=[];for(var i=0;i<editables.length;i++)originalContent.push(editables[i].innerHTML)}
+    toast('编辑模式已开启：拖拽≡排序，双击文字编辑')
+  }else{
+    toast('编辑模式已关闭')
+  }
+}
+
+function saveAll(){
+  var wraps=document.querySelectorAll('.drag-wrap');
+  var ids=[];
+  for(var i=0;i<wraps.length;i++)ids.push(wraps[i].dataset.id);
+  localStorage.setItem('qixi_plan_order',JSON.stringify(ids));
+  var editables=document.querySelectorAll('[data-editable]');
+  var contents=[];
+  for(var i=0;i<editables.length;i++)contents.push(editables[i].innerHTML);
+  localStorage.setItem('qixi_plan_content',JSON.stringify(contents));
+  originalOrder=ids.slice();
+  originalContent=contents.slice();
+  toast('已保存到本地浏览器')
+}
+
+function loadSaved(){
+  var order=localStorage.getItem('qixi_plan_order');
+  if(order){
+    order=JSON.parse(order);
+    var canvas=document.getElementById('canvas');
+    for(var i=order.length-1;i>=0;i--){
+      var el=canvas.querySelector('.drag-wrap[data-id="'+order[i]+'"]');
+      if(el)canvas.insertBefore(el,canvas.firstChild.nextSibling);
+    }
+  }
+  var content=localStorage.getItem('qixi_plan_content');
+  if(content){
+    content=JSON.parse(content);
+    var editables=document.querySelectorAll('[data-editable]');
+    for(var i=0;i<Math.min(content.length,editables.length);i++){
+      editables[i].innerHTML=content[i];
+    }
+  }
+}
+
+function resetAll(){
+  if(!confirm('恢复为原始方案内容并清除本地保存？'))return;
+  localStorage.removeItem('qixi_plan_order');
+  localStorage.removeItem('qixi_plan_content');
+  location.reload();
+}
+
+var dragSrc=null;
+document.addEventListener('dragstart',function(e){
+  if(!editMode)return;
+  var wrap=e.target.closest('.drag-wrap');
+  if(!wrap)return;
+  dragSrc=wrap;
+  wrap.classList.add('dragging');
+  e.dataTransfer.effectAllowed='move';
+  e.dataTransfer.setData('text/plain',wrap.dataset.id);
+});
+document.addEventListener('dragend',function(e){
+  if(!dragSrc)return;
+  dragSrc.classList.remove('dragging');
+  dragSrc=null;
+  document.querySelectorAll('.drag-wrap.drag-over').forEach(function(w){w.classList.remove('drag-over')});
+});
+document.addEventListener('dragover',function(e){
+  if(!editMode||!dragSrc)return;
+  e.preventDefault();
+  var wrap=e.target.closest('.drag-wrap');
+  if(!wrap||wrap===dragSrc)return;
+  wrap.classList.add('drag-over');
+  e.dataTransfer.dropEffect='move';
+});
+document.addEventListener('dragleave',function(e){
+  var wrap=e.target.closest('.drag-wrap');
+  if(wrap)wrap.classList.remove('drag-over');
+});
+document.addEventListener('drop',function(e){
+  if(!editMode||!dragSrc)return;
+  e.preventDefault();
+  var wrap=e.target.closest('.drag-wrap');
+  if(!wrap||wrap===dragSrc)return;
+  wrap.classList.remove('drag-over');
+  var canvas=document.getElementById('canvas');
+  var rect=wrap.getBoundingClientRect();
+  var mid=rect.top+rect.height/2;
+  if(e.clientY<mid){canvas.insertBefore(dragSrc,wrap)}else{canvas.insertBefore(dragSrc,wrap.nextSibling)}
+});
+
+loadSaved();
+</script>
+</body>
+</html>
