@@ -21,6 +21,8 @@ main{max-width:1180px;margin:0 auto;padding:20px 24px 64px}.hero{background:line
 section{margin-top:20px;position:relative}h2{font-size:27px;margin:0 0 14px}h3{font-size:19px;margin:0 0 8px}.callout{border-left:5px solid var(--rose);background:#fff8fa;padding:16px 18px;border-radius:10px}
 table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:14px}th,td{padding:10px 9px;border-bottom:1px solid var(--line);vertical-align:middle;text-align:left}th{background:#fbf4f6;color:#5b3a44;font-weight:700;white-space:nowrap}tr:last-child td{border-bottom:none}.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
 td[rowspan]{vertical-align:middle}
+.exec-check{width:18px;height:18px;cursor:pointer;accent-color:var(--green)}
+tr.done td:not(:first-child){text-decoration:line-through;color:var(--muted)}
 tr:hover td{background:#fdfafb}
 .wide-table{font-size:12px}.wide-table th,.wide-table td{padding:8px 6px}
 ul,ol{padding-left:21px;margin:8px 0}.flow{display:flex;gap:10px;align-items:stretch;flex-wrap:wrap}.step{flex:1;min-width:160px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}.step b{color:var(--rose)}
@@ -228,19 +230,21 @@ ul,ol{padding-left:21px;margin:8px 0}.flow{display:flex;gap:10px;align-items:str
 <main>
 
 <div class="drag-wrap" draggable="false" data-id="11"><span class="drag-handle">≡</span>
-<section><h2>执行分工表</h2><div data-editable="false">
-<table><thead><tr><th>板块</th><th>负责人</th><th>具体事项</th><th>截止时间</th></tr></thead><tbody>
-<tr><td>总统筹</td><td>AC总、陈总、余兰</td><td>整体进度把控、跨板块协调、关键决策</td><td>全程</td></tr>
-<tr><td>海报设计</td><td>林可欣</td><td>活动 KV 海报设计、各平台适配尺寸输出</td><td>7/30</td></tr>
-<tr><td>小红书文案</td><td>丽莎</td><td>活动文案参考模板（种草笔记、试戴笔记、赠品开箱等）</td><td>7/31</td></tr>
-<tr><td>朋友圈规范</td><td>林可欣</td><td>朋友圈文案模板 + 图片拍摄规范（角度、构图、滤镜统一）</td><td>7/31</td></tr>
-<tr><td>KOS 账号</td><td>欣然、思豆</td><td>两个 KOS 账号日常运营、购物分享内容发布</td><td>8/7—8/19</td></tr>
-<tr><td>门店执行</td><td>思豆、欣然</td><td>各门店拍摄与发布落地跟进、素材收集、节奏提醒</td><td>8/1—8/19</td></tr>
-<tr><td>达人板块</td><td>灵榕</td><td>日常探店达人沟通，笔记中自然植入七夕活动信息</td><td>8/7—8/19</td></tr>
-<tr><td>货品礼品分发</td><td>陈总</td><td>镜架按配额分配到各店、礼盒按需配到店、配链款 500 副 + 项链 500 条同步到店</td><td>8/6 前</td></tr>
-<tr><td>门店笔记审核</td><td>曼芸、丽莎、泽鸿</td><td>各门店日常发布的小红书笔记内容审核与反馈</td><td>8/7—8/19</td></tr>
+<section><h2>执行分工表</h2>
+<p class="small" style="margin-bottom:8px">勾选即存档到云端，全组同步。 <button id="btnSyncExec" style="padding:3px 10px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:11px;font-family:inherit" onclick="syncExecNow()">立即同步</button> <span id="syncStatus" class="small"></span></p>
+<div data-editable="false">
+<table><thead><tr><th style="width:36px;text-align:center">✓</th><th>板块</th><th>负责人</th><th>具体事项</th><th>截止时间</th></tr></thead><tbody>
+<tr><td style="text-align:center"><input type="checkbox" class="exec-check" data-idx="0" onchange="toggleExec(this)"></td><td>总统筹</td><td>AC总、陈总、余兰</td><td>整体进度把控、跨板块协调、关键决策</td><td>全程</td></tr>
+<tr><td style="text-align:center"><input type="checkbox" class="exec-check" data-idx="1" onchange="toggleExec(this)"></td><td>海报设计</td><td>林可欣</td><td>活动 KV 海报设计、各平台适配尺寸输出</td><td>7/30</td></tr>
+<tr><td style="text-align:center"><input type="checkbox" class="exec-check" data-idx="2" onchange="toggleExec(this)"></td><td>小红书文案</td><td>丽莎</td><td>活动文案参考模板（种草笔记、试戴笔记、赠品开箱等）</td><td>7/31</td></tr>
+<tr><td style="text-align:center"><input type="checkbox" class="exec-check" data-idx="3" onchange="toggleExec(this)"></td><td>朋友圈规范</td><td>林可欣</td><td>朋友圈文案模板 + 图片拍摄规范（角度、构图、滤镜统一）</td><td>7/31</td></tr>
+<tr><td style="text-align:center"><input type="checkbox" class="exec-check" data-idx="4" onchange="toggleExec(this)"></td><td>KOS 账号</td><td>欣然、思豆</td><td>两个 KOS 账号日常运营、购物分享内容发布</td><td>8/7—8/19</td></tr>
+<tr><td style="text-align:center"><input type="checkbox" class="exec-check" data-idx="5" onchange="toggleExec(this)"></td><td>门店执行</td><td>思豆、欣然</td><td>各门店拍摄与发布落地跟进、素材收集、节奏提醒</td><td>8/1—8/19</td></tr>
+<tr><td style="text-align:center"><input type="checkbox" class="exec-check" data-idx="6" onchange="toggleExec(this)"></td><td>达人板块</td><td>灵榕</td><td>日常探店达人沟通，笔记中自然植入七夕活动信息</td><td>8/7—8/19</td></tr>
+<tr><td style="text-align:center"><input type="checkbox" class="exec-check" data-idx="7" onchange="toggleExec(this)"></td><td>货品礼品分发</td><td>陈总</td><td>镜架按配额分配到各店、礼盒按需配到店、配链款 500 副 + 项链 500 条同步到店</td><td>8/6 前</td></tr>
+<tr><td style="text-align:center"><input type="checkbox" class="exec-check" data-idx="8" onchange="toggleExec(this)"></td><td>门店笔记审核</td><td>曼芸、丽莎、泽鸿</td><td>各门店日常发布的小红书笔记内容审核与反馈</td><td>8/7—8/19</td></tr>
 </tbody></table>
-<p class="small" style="margin-top:10px">所有截止时间均为建议日期，实际以项目群内确认版为准。各板块负责人如有调整，直接双击表格文字修改后保存。</p>
+<p class="small" style="margin-top:10px">所有截止时间均为建议日期，实际以项目群内确认版为准。</p>
 </div></section></div>
 
 <div class="footer">方案日期：2026-07-28 | 销售预测为情景测算，不构成结果承诺。</div>
@@ -360,6 +364,85 @@ document.addEventListener('drop',function(e){
 });
 
 loadSaved();
+
+// ====== 执行分工打勾同步 ======
+var execURL='https://raw.githubusercontent.com/kexinyao7-afk/qixi-campaign/main/progress.json';
+var execAPI='https://api.github.com/repos/kexinyao7-afk/qixi-campaign/contents/progress.json';
+var execToken=null;
+var execState=[];
+var execSyncing=false;
+
+function toggleExec(el){
+  var idx=parseInt(el.dataset.idx);
+  execState[idx]=el.checked;
+  var row=el.closest('tr');
+  if(el.checked)row.classList.add('done');else row.classList.remove('done');
+  saveExecLocal();
+  syncExec();
+}
+
+function saveExecLocal(){localStorage.setItem('qixi_exec',JSON.stringify(execState))}
+function loadExecLocal(){
+  var s=localStorage.getItem('qixi_exec');
+  if(s){
+    execState=JSON.parse(s);
+    var checks=document.querySelectorAll('.exec-check');
+    for(var i=0;i<checks.length;i++){
+      if(i<execState.length){checks[i].checked=execState[i];if(execState[i])checks[i].closest('tr').classList.add('done')}
+    }
+  }
+  fetchExecRemote();
+}
+
+function fetchExecRemote(){
+  fetch(execURL+'?t='+Date.now()).then(function(r){return r.json()}).then(function(d){
+    if(!d||!d.tasks)return;
+    var remoteChanged=false;
+    for(var i=0;i<d.tasks.length;i++){
+      if(d.tasks[i]!==execState[i]){remoteChanged=true;break}
+    }
+    if(remoteChanged){
+      execState=d.tasks;
+      saveExecLocal();
+      var checks=document.querySelectorAll('.exec-check');
+      for(var i=0;i<checks.length;i++){
+        if(i<execState.length){checks[i].checked=execState[i];var row=checks[i].closest('tr');if(execState[i])row.classList.add('done');else row.classList.remove('done')}
+      }
+    }
+  }).catch(function(){})
+}
+
+function syncExec(){
+  if(execSyncing)return;
+  execSyncing=true;
+  setTimeout(function(){execSyncing=false},3000);
+  try{
+    var content=btoa(unescape(encodeURIComponent(JSON.stringify({tasks:execState}))));
+    var headers={'Authorization':'token '+execToken,'Accept':'application/vnd.github+json'};
+    fetch(execAPI,{headers:headers}).then(function(r){return r.json()}).then(function(d){
+      var sha=d.sha;
+      return fetch(execAPI,{method:'PUT',headers:headers,body:JSON.stringify({message:'update progress',content:content,sha:sha})});
+    }).then(function(){document.getElementById('syncStatus').textContent=''}).catch(function(e){
+      document.getElementById('syncStatus').textContent='需设置Token同步';
+    })
+  }catch(e){}
+}
+
+function syncExecNow(){
+  if(!execToken){
+    var t=prompt('请输入 GitHub Personal Access Token（需 repo 权限）:');
+    if(!t)return;
+    execToken=t;
+    localStorage.setItem('qixi_exec_token',t);
+  }
+  document.getElementById('syncStatus').textContent='同步中...';
+  syncExec();
+}
+
+// init
+execToken=localStorage.getItem('qixi_exec_token');
+loadExecLocal();
+setInterval(fetchExecRemote,20000);
 </script>
 </body>
 </html>
